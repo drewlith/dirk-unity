@@ -11,7 +11,7 @@ public class ROM : MonoBehaviour
     public static Dictionary<string,Tile[]> TILESETS = new Dictionary<string, Tile[]>(); // Dictionary containing tilesets keyed by character name.
     void Awake()
     {
-        string path = "C:/Users/Drew/Documents/Dirk/Assets/Test.smc"; // Test Path only
+        string path = Application.dataPath + "/Test.smc"; // Test Path only
         DATA = File.ReadAllBytes(path);
         PALETTES = GetPalettes(Read(DATA,0x268000, 0x400));
         TILESETS.Add("Terra", GetTiles(Read(DATA,0x150000,0x16A0)));

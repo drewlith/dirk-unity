@@ -8,12 +8,23 @@ public class Bits : MonoBehaviour // I don't think it needs to be a MonoBehavior
     static byte[] MASK = {0x1,0x2,0x4,0x8,0x10,0x20,0x40,0x80}; 
     static byte[] CLEAR_MASK = {0xFE,0xFD,0xFB,0xF7,0xEF,0xDF,0xBF,0x7F};
 
+    static byte[] MASK_REVERSE = {0x80,0x40,0x20,0x10,0x8,0x4,0x2,0x1}; 
+
     static int GetByteIndex(byte[] data, int bit) { // Utility
         return (data.Length - 1) - bit / 8;
     }
 
     public static bool GetBit(byte[] data, int bit) { // Determines if a bit set or not. Index 0 = Least Significant Bit.
         if ((data[GetByteIndex(data, bit)] & MASK[bit%8]) == MASK[bit%8]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static bool GetBitMSB(byte[] data, int bit) { 
+        int index = bit / 8;
+        if ((data[index] & MASK_REVERSE[bit%8]) == MASK_REVERSE[bit%8]) {
             return true;
         } else {
             return false;
@@ -53,5 +64,4 @@ public class Bits : MonoBehaviour // I don't think it needs to be a MonoBehavior
         }
         return data;
     }
-    
 }

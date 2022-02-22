@@ -7,12 +7,12 @@ public class Esper : MonoBehaviour
     SpriteRenderer r;
     static int count;
     TextMesh t;
-    int counter;
     void Start()
     {
         r = GetComponent<SpriteRenderer>();
         t = GetComponentInChildren<TextMesh>();
         t.text = count.ToString();
+        count = 0;
         CreateSprite();
     }
 
@@ -32,6 +32,7 @@ public class Esper : MonoBehaviour
 
     public void SetZero() {
         count = 0;
+        t.text = count.ToString();
     }
 
     void CreateSprite() {   

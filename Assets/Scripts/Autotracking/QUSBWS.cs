@@ -11,7 +11,7 @@ public class QUSBWS : MonoBehaviour
     public static bool messageReceived;
     public static byte[] data;  // Data from RAM is accessed here. Because of the weirdness of this websocket implementation,
                                 // I can't simply create a function that returns the bytes.
-    async void Start()
+    async void OnEnable()
     {
         ws = new WebSocket("ws://localhost:8080");
 
@@ -25,12 +25,15 @@ public class QUSBWS : MonoBehaviour
         ws.OnError += (e) =>
         {
         Debug.Log("Error! " + e);
+        Autotracker.autotrack = false;
+        this.gameObject.SetActive(false);
         };
 
         ws.OnClose += (e) =>
         {
         Debug.Log("Connection closed!");
         Autotracker.autotrack = false;
+        this.gameObject.SetActive(false);
         };
 
         ws.OnMessage += (bytes) =>

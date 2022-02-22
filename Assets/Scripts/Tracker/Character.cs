@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     public int paletteNumber;
     public int bitNum;
     public bool obtained;
+    public Check[] myChecks;
     int spriteID;
     Sprite[] sprites = new Sprite[20];
     int counter;
@@ -32,9 +33,16 @@ public class Character : MonoBehaviour
     public void Track() { 
         if (obtained) {
             obtained = false;
+            for (int i = 0; i < myChecks.Length; i++) {
+                myChecks[i].available = false;
+                myChecks[i].done = false;
+            }
             total -= 1;
         } else {
             obtained = true;
+            for (int i = 0; i < myChecks.Length; i++) {
+                myChecks[i].available = true;
+            }
             total += 1;
         }
     }
