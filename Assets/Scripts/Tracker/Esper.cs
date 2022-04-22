@@ -7,7 +7,7 @@ public class Esper : MonoBehaviour
     SpriteRenderer r;
     static int count;
     TextMesh t;
-    void Start()
+    void OnEnable()
     {
         r = GetComponent<SpriteRenderer>();
         t = GetComponentInChildren<TextMesh>();
@@ -58,5 +58,13 @@ public class Esper : MonoBehaviour
         texture.filterMode = FilterMode.Point;
         texture.Apply();
         r.sprite = Sprite.Create(texture, new Rect(0f, 0f, texture.width,texture.height), new Vector2(0.5f, 0.5f), 12);                                        
+    }
+
+    void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0)) {
+            Add();
+        } else if (Input.GetMouseButtonDown(1)) {
+            Subtract();
+        }
     }
 }

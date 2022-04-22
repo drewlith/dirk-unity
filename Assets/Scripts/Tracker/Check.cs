@@ -9,7 +9,10 @@ public class Check : MonoBehaviour
     public bool done;
     bool soft;
     Transform checkMark;
+    public bool dragon;
+    public bool quest;
     public string address;
+    public static int total;
     void Start()
     {
         t = GetComponent<TextMesh>();
@@ -21,6 +24,9 @@ public class Check : MonoBehaviour
     public void Toggle() {
         if (!done) {
             done = true;
+            if (!quest) {
+                total += 1;
+            }
             soft = false;
             t.color = Color.yellow;
             checkMark.gameObject.SetActive(true);
@@ -30,6 +36,9 @@ public class Check : MonoBehaviour
     }
 
     public void Reset() {
+        if (done && !quest) {
+            total -= 1;
+        }
         done = false;
         t.color = Color.white;
         checkMark.gameObject.SetActive(false);

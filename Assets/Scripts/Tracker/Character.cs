@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
     int counter;
     BoxCollider2D coll;
 
-    void Start() {
+    void OnEnable() {
         r = GetComponent<SpriteRenderer>();
         CreateSprites();
         r.sprite = sprites[0];
@@ -35,7 +35,7 @@ public class Character : MonoBehaviour
             obtained = false;
             for (int i = 0; i < myChecks.Length; i++) {
                 myChecks[i].available = false;
-                myChecks[i].done = false;
+                myChecks[i].Reset();
             }
             total -= 1;
         } else {
