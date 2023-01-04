@@ -1,6 +1,8 @@
 # dirk
-Tracker for FF6WC made in Unity
+Tracker for FF6WC made in Unity Engine
+# Features
+*Pulls graphics data from ROM (Supports custom sprites)
+*Supports Autotracking via Websockets
+*Compact Design for Streaming Overlays
 
-Gets graphics data from ROM, and game state data from RAM using websockets.
-
-No longer being updated, I've moved on to web development for these types of stuff, but keeping this here for archival purposes.
+No longer in development, might remake some day.
