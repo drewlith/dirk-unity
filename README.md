@@ -5,4 +5,4 @@ Tracker for FF6WC made in Unity Engine
 - Supports Autotracking via Websockets
 - Compact Design for Streaming Overlays
 
-No longer in development, might remake some day.
+No longer in development, might port to a Flask app some day.
